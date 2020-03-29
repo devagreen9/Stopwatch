@@ -9,6 +9,9 @@ class App extends React.Component {
       time: 0,
       clearId: null
     };
+
+    this.timer = this.timer.bind(this);
+    this.startTimer = this.startTimer.bind(this);
   }
 
   // timer(e) {  // e = event
@@ -37,19 +40,16 @@ class App extends React.Component {
     }
   }
 
-  this.timer = this.timer.bind(this);
-  this.startTimer = this.startTimer.bind(this);
-
   // start function -> when button click I have to increase seconds/time
       // how do I increase time
       // setInterval() to be invoked onClick
   startTimer() {
 
-    this.setState({ time: this.state.time + 1 });
     // function add() {
     //   this.setState({ time: state.time + 1 }) 
     // }
     // setInterval(this.setState({ time: this.state.time + 1}), 1000);
+    this.setState({ time: this.state.time + 1 });
   }
 
   render() {
