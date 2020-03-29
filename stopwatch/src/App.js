@@ -11,31 +11,45 @@ class App extends React.Component {
     };
   }
 
-  this.timer = this.timer.bind(this);
-  this.startTimer = this.startTimer.bind(this);
+  // timer(e) {  // e = event
+  //   e.preventDefault(); // stops the page from refreshing 
+  //   const buttonClicked = e.target.id;
+  //   // console.log(buttonClicked);
+  //   if(buttonClicked === 'start') {
+  //     setInterval(this.startTimer, 1000);
+  //   } else if(buttonClicked === 'reset') {
+  //     this.setState({ time: 0});
+  //   } else if(buttonClicked === 'pause') {
+  //     clearId;
+  //   }
+  // }
 
-  timer(e) {  // e = event
-    e.preventDefault(); // stops the page from refreshing 
+  timer(e) {
+    e.preventDefault();
     const buttonClicked = e.target.id;
-    // console.log(buttonClicked);
     if(buttonClicked === 'start') {
-      setInterval(this.startTimer, 1000);
+      let id = setInterval(this.startTimer, 1000);
+      this.setState({ clearId: id });
     } else if(buttonClicked === 'reset') {
-      this.setState({ time: 0});
+      this.setState({ time: 0 });
     } else if(buttonClicked === 'pause') {
-      clearId;
+      clearInterval(this.state.clearId);
     }
   }
+
+  this.timer = this.timer.bind(this);
+  this.startTimer = this.startTimer.bind(this);
 
   // start function -> when button click I have to increase seconds/time
       // how do I increase time
       // setInterval() to be invoked onClick
   startTimer() {
 
-    function add() {
-      this.setState({ time: state.time + 1 }) 
-    }
-    setInterval(this.setState({ time: this.state.time + 1}), 1000);
+    this.setState({ time: this.state.time + 1 });
+    // function add() {
+    //   this.setState({ time: state.time + 1 }) 
+    // }
+    // setInterval(this.setState({ time: this.state.time + 1}), 1000);
   }
 
   render() {
