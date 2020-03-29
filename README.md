@@ -18,3 +18,5 @@ React Stopwatch
     // For Pause, onClick, stopwatch pauses 
   // If Restart is pressed, 
     // For Restart, onClick, stopwatch resets the seconds 
+
+This would not be possible without the help of Angel's Office Hours. 
