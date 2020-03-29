@@ -12,6 +12,7 @@ export default class App extends React.Component {
 
     this.timer = this.timer.bind(this);
     this.startTimer = this.startTimer.bind(this);
+    this.pause = this.pause.bind(this);
   }
 
   // timer(e) {  // e = event
@@ -34,14 +35,27 @@ export default class App extends React.Component {
     if(buttonClicked === 'start') {
       let id = setInterval(this.startTimer, 1000); //the setInterval() method will execute the "myTimer" function once every 1 second
       this.setState({ clearId: id });
-      var refreshIntervalId = null;
-      refreshIntervalId = setInterval( "timer()", 10000 );
     } else if(buttonClicked === 'reset') {
       this.setState({ time: 0 });
     } else if(buttonClicked === 'pause') {
-      clearInterval(this.state.clearId refreshIntervalId); // The clearInterval() method clears a timer set with the setInterval() method.
+       // The clearInterval() method clears a timer set with the setInterval() method.
       // The ID value returned by setInterval() is used as the parameter for the clearInterval() method.
       // Note: To be able to use the clearInterval() method, you must use a variable when creating the interval method:
+    }
+  }
+
+  // This was supposed to restart the button after it was paused
+  pause(e) {
+    e.preventDefault = e.target.id;
+    const pauseButton = e.target.id;
+    var refreshIntervalId = null;
+    refreshIntervalId = setInterval(this.state, 1000);
+    if(pauseButton === 'pause') {
+      let pause = clearInterval;
+      this.setState({ clearId: pause });
+      clearInterval(this.state.clearId)
+    } else{
+      clearInterval(refreshIntervalId);
     }
   }
 
@@ -60,13 +74,12 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="App">
-
         <h1>{ this.state.time }</h1>
-         <form onClick={ this.timer }>
-            <button id='start'>Start</button>
-            <button id='pause' >Pause</button>
-            <button id='reset'>Reset</button>
-          </form>
+         <div>
+            <button id='start' onClick={ this.timer }>Start</button>
+            <button id='pause' onClick={ this.pause }>Pause</button>
+            <button id='reset' onClick={ this.timer }>Reset</button>
+          </div>
       </div>
     );
   }
