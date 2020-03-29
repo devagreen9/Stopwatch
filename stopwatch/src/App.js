@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
 
@@ -55,18 +55,14 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-    <h1>{  }</h1>
-          <form onClick={ this.timer }>
+
+        <h1>{ this.state.time }</h1>
+         <form onClick={ this.timer }>
             <button id='start'>Start</button>
             <button id='pause'>Pause</button>
             <button id='reset'>Reset</button>
           </form>
-        </header>
       </div>
     );
   }
   }
-  
-
-export default App;
