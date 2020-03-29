@@ -27,16 +27,21 @@ export default class App extends React.Component {
   //   }
   // }
 
-  timer(e) {
-    e.preventDefault();
+  timer(e) { // e = event
+    e.preventDefault(); // stops the page from refreshing
     const buttonClicked = e.target.id;
+    // console.log(buttonClicked);
     if(buttonClicked === 'start') {
-      let id = setInterval(this.startTimer, 1000);
+      let id = setInterval(this.startTimer, 1000); //the setInterval() method will execute the "myTimer" function once every 1 second
       this.setState({ clearId: id });
+      var refreshIntervalId = null;
+      refreshIntervalId = setInterval( "timer()", 10000 );
     } else if(buttonClicked === 'reset') {
       this.setState({ time: 0 });
     } else if(buttonClicked === 'pause') {
-      clearInterval(this.state.clearId);
+      clearInterval(this.state.clearId refreshIntervalId); // The clearInterval() method clears a timer set with the setInterval() method.
+      // The ID value returned by setInterval() is used as the parameter for the clearInterval() method.
+      // Note: To be able to use the clearInterval() method, you must use a variable when creating the interval method:
     }
   }
 
@@ -59,7 +64,7 @@ export default class App extends React.Component {
         <h1>{ this.state.time }</h1>
          <form onClick={ this.timer }>
             <button id='start'>Start</button>
-            <button id='pause'>Pause</button>
+            <button id='pause' >Pause</button>
             <button id='reset'>Reset</button>
           </form>
       </div>
